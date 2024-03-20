@@ -27,23 +27,12 @@ def wrap_text(text, line_length=79):
 
 # Define the descriptions for each file
 descriptions = {
-    "0-select_states.py": "This module contains a Python script that interacts with a MySQL database using MySQLdb. It fetches all rows from the 'states' table in the specified database and prints them.",
-    "1-filter_states.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It fetches states with names starting with 'N' from the 'states' table in the specified database.",
-    "2-my_filter_states.py": "This module contains a Python script that interacts with a MySQL database using MySQLdb. It fetches a state with a specific name from the 'states' table in the specified database.",
-    "3-my_safe_filter_states.py": "This module contains a Python script that interacts with a MySQL database using MySQLdb. It fetches a state with a specific name from the 'states' table in the specified database using a parameterized query.",
-    "4-cities_by_state.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It retrieves city names from cities in a state specified by name from the 'cities' and 'states' tables in the specified database.",
-    "5-filter_cities.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It deletes states with names containing 'a' from the 'states' table in the specified database.",
-    "6-model_state.py": "This module defines the State class using SQLAlchemy ORM for mapping to the 'states' table in the database.",
-    "7-model_state_fetch_all.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It retrieves all states from the 'states' table in the specified database and prints their IDs and names.",
-    "8-model_state_fetch_first.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It retrieves the first state from the 'states' table in the specified database and prints its ID and name.",
-    "9-model_state_filter_a.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It retrieves states with names containing 'a' from the 'states' table in the specified database and prints their IDs and names.",
-    "10-model_state_my_get.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It retrieves a state with a specific name from the 'states' table in the specified database using a custom get method.",
-    "11-model_state_insert.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It inserts a new state into the 'states' table in the specified database.",
-    "12-model_state_update_id_2.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It updates the name of a state in the 'states' table in the specified database.",
-    "13-model_state_delete_a.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It deletes states with names containing 'a' from the 'states' table in the specified database.",
-    "14-model_city_fetch_by_state.py": "This module contains a Python script that interacts with a MySQL database using SQLAlchemy ORM. It retrieves city names along with their corresponding state names from the 'cities' and 'states' tables in the specified database.",
-    "model_state.py": "This module defines the State class using SQLAlchemy ORM for mapping to the 'states' table in the database.",
-    "model_city.py": "This module defines the City class using SQLAlchemy ORM for mapping to the 'cities' table in the database.",
+    "0-script.py": "add documentation here.",
+    "1-script.py": "add documentation here.",
+    "2-script.py": "add documentation here.",
+    "3-script.py": "add documentation here.",
+    "4-script.py": "add documentation here.",
+    "5-script.py": "add documentation here.",
 }
 
 # Iterate through each file and insert the documentation
