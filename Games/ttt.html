@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tic Tac Toe with Soccer Teams</title>
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+  }
+  .cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Tic Tac Toe with Soccer Teams</h1>
+  <div>
+    <select id="team-select-1">
+      <option value="Barcelona">Barcelona</option>
+      <option value="Real Madrid">Real Madrid</option>
+      <option value="Manchester United">Manchester United</option>
+      <option value="Liverpool">Liverpool</option>
+      <option value="Bayern Munich">Bayern Munich</option>
+      <option value="Juventus">Juventus</option>
+      <option value="Paris Saint-Germain">Paris Saint-Germain</option>
+      <option value="Chelsea">Chelsea</option>
+    </select>
+    <select id="team-select-2">
+      <option value="Barcelona">Barcelona</option>
+      <option value="Real Madrid">Real Madrid</option>
+      <option value="Manchester United">Manchester United</option>
+      <option value="Liverpool">Liverpool</option>
+      <option value="Bayern Munich">Bayern Munich</option>
+      <option value="Juventus">Juventus</option>
+      <option value="Paris Saint-Germain">Paris Saint-Germain</option>
+      <option value="Chelsea">Chelsea</option>
+    </select>
+    <button id="start-btn">Start Game</button>
+  </div>
+  <div class="board" id="board">
+    <div class="cell" data-index="0"></div>
+    <div class="cell" data-index="1"></div>
+    <div class="cell" data-index="2"></div>
+    <div class="cell" data-index="3"></div>
+    <div class="cell" data-index="4"></div>
+    <div class="cell" data-index="5"></div>
+    <div class="cell" data-index="6"></div>
+    <div class="cell" data-index="7"></div>
+    <div class="cell" data-index="8"></div>
+  </div>
+  <p id="status"></p>
+  <button id="reset-btn" style="display: none;">Reset</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const board = document.getElementById('board');
+    const cells = board.querySelectorAll('.cell');
+    const status = document.getElementById('status');
+    const resetButton = document.getElementById('reset-btn');
+    const teamSelect1 = document.getElementById('team-select-1');
+    const teamSelect2 = document.getElementById('team-select-2');
+    const startButton = document.getElementById('start-btn');
+    let currentPlayer = '';
+    let winner = null;
+    let gameStarted = false;
+
+    // Start button click event listener
+    startButton.addEventListener('click', () => {
+      if (!gameStarted) {
+        currentPlayer = teamSelect1.value;
+        status.textContent = `Team ${currentPlayer}'s turn`;
+        gameStarted = true;
+        startButton.style.display = 'none';
+        resetButton.style.display = 'block';
+      }
+    });
+
+    // Add click event listener to each cell
+    cells.forEach(cell => {
+      cell.addEventListener('click', () => {
+        if (gameStarted && !cell.textContent && !winner) {
+          cell.textContent = currentPlayer;
+          if (checkWin()) {
+            status.textContent = `Team ${currentPlayer} wins!`;
+            winner = currentPlayer;
+          } else if (checkDraw()) {
+            status.textContent = "It's a draw!";
+          } else {
+            currentPlayer = currentPlayer === teamSelect1.value ? teamSelect2.value : teamSelect1.value;
+            status.textContent = `Team ${currentPlayer}'s turn`;
+          }
+        }
+      });
+    });
+
+    // Reset button click event listener
+    resetButton.addEventListener('click', () => {
+      resetGame();
+    });
+
+    // Function to check for a win
+    function checkWin() {
+      const lines = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+        [0, 4, 8], [2, 4, 6]             // diagonals
+      ];
+      for (let line of lines) {
+        if (cells[line[0]].textContent &&
+            cells[line[0]].textContent === cells[line[1]].textContent &&
+            cells[line[1]].textContent === cells[line[2]].textContent) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // Function to check for a draw
+    function checkDraw() {
+      return Array.from(cells).every(cell => cell.textContent);
+    }
+
+    // Function to reset the game
+    function resetGame() {
+      cells.forEach(cell => {
+        cell.textContent = '';
+      });
+      status.textContent = '';
+      currentPlayer = '';
+      winner = null;
+      gameStarted = false;
+      startButton.style.display = 'block';
+      resetButton.style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
