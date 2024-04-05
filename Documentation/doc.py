@@ -33,11 +33,16 @@ descriptions = {
     "3-script.py": "add documentation here.",
     "4-script.py": "add documentation here.",
     "5-script.py": "add documentation here.",
+    "6-script.py": "add documentation here.",
+    "7-script.py": "add documentation here.",
+    "8-script.py": "add documentation here.",
+    "9-script.py": "add documentation here.",
+    "10-script.py": "add documentation here.",
 }
 
 # Iterate through each file and insert the documentation
 # Iterate through each file and insert the documentation
-for filename, description in descriptions.items():
+for filename, description in descriptions.():
     wrapped_description = wrap_text(description)
     file_path = os.path.join(".", filename)
     with open(file_path, "r+") as file:
